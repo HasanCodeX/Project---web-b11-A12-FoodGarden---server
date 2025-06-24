@@ -36,8 +36,8 @@ FRONTEND_DEV_URL=http://localhost:5173
 ## 🚀 Deployment
 Local Development
 ```bash
-pnpm install
-pnpm start
+npm install
+npm start
 ```
 Production Recommendations
 Set NODE_ENV=production
