@@ -12,7 +12,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: ["https://foodbd123.netlify.app", "http://localhost:5173"],
+    origin: ["https://food-garden-bd.web.app", "http://localhost:5173"],
     credentials: true,
   })
 );
