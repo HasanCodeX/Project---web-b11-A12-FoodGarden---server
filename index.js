@@ -12,7 +12,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: ["https://foodbd123.netlify.app",'http://localhost:5173'],
+    origin: ["https://foodbd123.netlify.app", "http://localhost:5173"],
     credentials: true,
   })
 );
@@ -44,7 +44,7 @@ app.post("/jwt", async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: true,
-    sameSite:'none'
+    sameSite: "none",
   });
   res.send({ message: "token sent", status: true });
 });
@@ -75,8 +75,8 @@ async function run() {
       }
     });
 
-    // Add new food item { i wiil add verefi tocken here }
-    app.post("/foods",verifyToken, async (req, res) => {
+    // Add new food item {token here }
+    app.post("/foods", verifyToken, async (req, res) => {
       try {
         const newFood = req.body;
         const result = await foods.insertOne(newFood);
@@ -90,8 +90,8 @@ async function run() {
       }
     });
 
-    // DELETE food item by ID { i wiil add verefi tocken here }
-    app.delete("/foods/:id",verifyToken, async (req, res) => {
+    // DELETE food item by ID {  token here }
+    app.delete("/foods/:id", verifyToken, async (req, res) => {
       try {
         const id = req.params.id;
         const query = { _id: new ObjectId(id) };
@@ -113,8 +113,8 @@ async function run() {
       }
     });
 
-    // UPDATE food item by ID 
-    app.put("/foods/:id",verifyToken, async (req, res) => {
+    // UPDATE food item by ID {  token here }
+    app.put("/foods/:id", verifyToken, async (req, res) => {
       try {
         const id = req.params.id;
         const updatedData = req.body;
@@ -142,8 +142,8 @@ async function run() {
       }
     });
 
-    // GET single food item by ID
-    app.get("/foods/:id",verifyToken, async (req, res) => {
+    // GET single food item by ID {  token here }
+    app.get("/foods/:id", verifyToken, async (req, res) => {
       try {
         const id = req.params.id;
         const food = await foods.findOne({ _id: new ObjectId(id) });
@@ -158,8 +158,8 @@ async function run() {
       }
     });
 
-    // POST a new note to a food item  { i wiil add verefi tocken here }
-    app.post("/foods/notes/:id",  async (req, res) => {
+    // POST a new note to a food item
+    app.post("/foods/notes/:id", async (req, res) => {
       try {
         const id = req.params.id;
         console.log(id);
